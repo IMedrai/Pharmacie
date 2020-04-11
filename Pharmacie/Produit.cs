@@ -8,5 +8,8 @@ namespace Pharmacie
 {
     class Produit
     {
+        private String refProduit;
+        private String libelleProduit;
+        private Double prixProduit;
     }
 }
