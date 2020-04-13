@@ -8,6 +8,8 @@ namespace Pharmacie
 {
     static class Program
     {
+
+        public static ADO dbHandler;
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
@@ -16,7 +18,8 @@ namespace Pharmacie
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            dbHandler = new ADO("Data Source = SSR\\SQLEXPRESS; Initial Catalog = Pharmacie; Integrated Security = True");
+            Application.Run(new ProduitForm());
         }
     }
 }

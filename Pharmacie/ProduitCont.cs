@@ -10,9 +10,17 @@ namespace Pharmacie
     {
         private List<Produit> listeProduits;
 
+        internal List<Produit> ListeProduits { get => listeProduits; set => listeProduits = value; }
 
-        public Boolean ajouterProduits(List<Produit> listeProduitsAAjouter)
+        public Boolean ajouterProduits()
         {
+            if (listeProduits != null && listeProduits.Count > 0)
+            {
+                foreach(Produit prod in listeProduits)
+                {
+                    prod.ajouterProduit();
+                }
+            }
             return true;
         }
 
@@ -26,10 +34,9 @@ namespace Pharmacie
             return true;
         }
 
-
-        public void remplirListeProduits(Object param)
+        public ProduitCont(List<Produit> listProduits)
         {
-        
+            this.ListeProduits = listProduits;
         }
 
 

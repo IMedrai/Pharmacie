@@ -11,27 +11,49 @@ namespace Pharmacie
     class ADO
     {
         // declaration des objets sql 
-        public SqlConnection con = new SqlConnection();
-        public SqlCommand cmd = new SqlCommand();
+        private SqlConnection con;
+        public SqlCommand cmd;
         public SqlDataReader dr;
         public DataTable dt = new DataTable();
+        private String cnxString;
 
         // declaration de la methode connecter
-        public void CONNECTER()
+        public void connecter()
         {
-            if (con.State == ConnectionState.Closed || con.State == ConnectionState.Broken)
+            if (con == null || con.State != ConnectionState.Open)
             {
-                con.ConnectionString = "Data Source=SSR\\SQLEXPRESS;Initial Catalog=Pharmacie;Integrated Security=True";
+                
                 con.Open();
             }
         }
         // declaration de la methode deconnection
-        public void DECONNECTER()
+        public void deconnecter()
         {
             if (con.State == ConnectionState.Open)
             {
                 con.Close();
             }
+        }
+
+        public Boolean executeRequest(String request, List<SqlParameter> param)
+        {
+            Boolean resultRequest = true;
+            connecter();
+            SqlCommand command = new SqlCommand(request);
+            command.Parameters.AddRange(param.ToArray());
+            int result = command.ExecuteNonQuery();
+            if (result == -1)
+            {
+                resultRequest = false;
+            }
+            return resultRequest;
+        }
+
+        public ADO(String connectionString)
+        {
+            cnxString = connectionString;
+            con = new SqlConnection();
+            con.ConnectionString = this.cnxString;
         }
     }
 }
