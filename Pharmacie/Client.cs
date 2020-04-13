@@ -12,37 +12,41 @@ namespace Pharmacie
 		private string nom;
 		private string prenom;
 
+		public string Cin { get => cin; set => cin = value; }
+		public string Nom { get => nom; set => nom = value; }
+		public string Prenom { get => prenom; set => prenom = value; }
 
-
-		public string Cin
-		{
-			get { return cin; }
-			set { cin = value; }
-		}
-
-		public string Nom
-		{
-			get { return nom; }
-			set { nom = value; }
-		}
-
-		public string Prenom
-		{
-			get { return prenom; }
-			set { prenom = value; }
-		}
-
-
-		private Client()
+		public Client()
 		{
 		}
 
-		private Client(string cin, string nom, string prenom)
+		public Client(string cin, string nom, string prenom)
 		{
-			this.cin = cin;
-			this.nom = nom;
-			this.prenom = prenom;
-			
+			Cin = cin;
+			Nom = nom;
+			Prenom = prenom;
+		}
+
+
+		public Boolean ajouterClient()
+		{
+			return true;
+		}
+
+
+		public Boolean modifierClient()
+		{
+			return true;
+		}
+
+		public Boolean chercherClientParCin()
+		{
+			return true;
+		}
+
+		public Boolean chercherClientParNom()
+		{
+			return true;
 		}
 	}
 }

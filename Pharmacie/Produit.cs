@@ -10,50 +10,49 @@ namespace Pharmacie
 {
 	class Produit
 	{
-		private string refProduit;
+		private String refProduit;
 		private int codeBar;
-		private double prix;
-		private string libelle;
-		
+		private Double prix;
+		private String libelle;
 
 
-		public string RefProduit
-		{
-			get { return refProduit; }
-			set { refProduit = value; }
-		}
 
-		public int CodeBar
-		{
-			get { return codeBar; }
-			set { codeBar = value; }
-		}
+		public string RefProduit { get => refProduit; set => refProduit = value; }
+		public int CodeBar { get => codeBar; set => codeBar = value; }
+		public double Prix { get => prix; set => prix = value; }
+		public string Libelle { get => libelle; set => libelle = value; }
 
-		public double Prix
-		{
-			get { return prix; }
-			set { prix = value; }
-		}
 
-		public string Libelle
-		{
-			get { return libelle; }
-			set { libelle = value; }
-		}
-
-		private Produit()
+		public Produit()
 		{
 		}
 
-		private Produit(string refProduit, int codeBar, double prix, string libelle)
+		public Produit(string refProduit, int codeBar, double prix, string libelle)
 		{
-			this.refProduit = refProduit;
-			this.codeBar = codeBar;
-			this.prix = prix;
-			this.libelle = libelle;
+			RefProduit = refProduit;
+			CodeBar = codeBar;
+			Prix = prix;
+			Libelle = libelle;
+		}
+		public Boolean ajouterProduit()
+		{
+			return true;
 		}
 
+		public Boolean modifierProduit()
+		{
+			return true;
+		}
 
+		public Boolean chercherProduitParRef()
+		{
+			return true;
+		}
+
+		public Boolean chercherProduitParCodeBar()
+		{
+			return true;
+		}
 	}
 }
 

@@ -49,6 +49,13 @@
     <Compile Include="Achat.cs" />
     <Compile Include="ADO.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="ClientD.cs" />
+    <Compile Include="ClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Credit.cs" />
     <Compile Include="FactureClient.cs" />
     <Compile Include="FactureFournisseur.cs" />
@@ -59,12 +66,45 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Fournisseur.cs" />
-    <Compile Include="ModePayement.cs" />
+    <Compile Include="FournisseurD.cs" />
+    <Compile Include="FournisseurForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FournisseurForm.Designer.cs">
+      <DependentUpon>FournisseurForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModePaiementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModePaiementForm.Designer.cs">
+      <DependentUpon>ModePaiementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModePaiement.cs" />
+    <Compile Include="ModePaiementD.cs" />
     <Compile Include="Produit.cs" />
+    <Compile Include="ProduitCont.cs" />
+    <Compile Include="ProduitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProduitForm.Designer.cs">
+      <DependentUpon>ProduitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stock.cs" />
     <Compile Include="Vente.cs" />
+    <EmbeddedResource Include="ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FournisseurForm.resx">
+      <DependentUpon>FournisseurForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModePaiementForm.resx">
+      <DependentUpon>ModePaiementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProduitForm.resx">
+      <DependentUpon>ProduitForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

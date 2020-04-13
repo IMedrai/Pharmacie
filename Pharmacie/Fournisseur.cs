@@ -12,29 +12,41 @@ namespace Pharmacie
 		private int numeroRC;
 		private string raisonSociale;
 
+		public int NumeroRC { get => numeroRC; set => numeroRC = value; }
+		public string RaisonSociale { get => raisonSociale; set => raisonSociale = value; }
 
-		public int NumeroRC
-		{
-			get { return numeroRC; }
-			set { numeroRC = value; }
-		}
-
-
-		public string RaisonSociale
-		{
-			get { return raisonSociale; }
-			set { raisonSociale = value; }
-		}
-
-
-		private Fournisseur()
+		public Fournisseur()
 		{
 		}
 
-		private Fournisseur (int numeroRC, string raisonSociale)
+		public Fournisseur(int numeroRC, string raisonSociale)
 		{
-			this.numeroRC = numeroRC;
-			this.raisonSociale = raisonSociale;
+			NumeroRC = numeroRC;
+			RaisonSociale = raisonSociale;
 		}
+
+		public Boolean ajouterFournisseur()
+		{
+			return true;
+		}
+
+		public Boolean modifierFournisseur()
+		{
+			return true;
+		}
+
+		public Boolean chercherFournisseurParRC()
+		{
+			return true;
+		}
+
+		public Boolean chercherFournisseurParRS()
+		{
+			return true;
+		}
+
+
+
+
 	}
 }
