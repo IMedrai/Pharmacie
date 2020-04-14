@@ -112,7 +112,7 @@ namespace Pharmacie
         private void button_appliquer_Click(object sender, EventArgs e)
         {
             ProduitCont prodCont = new ProduitCont(lireListProduits());
-            Boolean result = prodCont.ajouterProduits();
+            Boolean result = prodCont.ajouterOuModifierProduits();
             if (result == false)
             {
                 MessageBox.Show("Un problème est survenu lors de l'insertion des produits");

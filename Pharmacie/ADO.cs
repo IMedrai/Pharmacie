@@ -40,6 +40,7 @@ namespace Pharmacie
             Boolean resultRequest = true;
             connecter();
             SqlCommand command = new SqlCommand(request);
+            command.Connection = this.con;
             command.Parameters.AddRange(param.ToArray());
             int result = command.ExecuteNonQuery();
             if (result == -1)

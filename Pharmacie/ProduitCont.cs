@@ -12,7 +12,7 @@ namespace Pharmacie
 
         internal List<Produit> ListeProduits { get => listeProduits; set => listeProduits = value; }
 
-        public Boolean ajouterProduits()
+        public Boolean ajouterOuModifierProduits()
         {
             if (listeProduits != null && listeProduits.Count > 0)
             {
