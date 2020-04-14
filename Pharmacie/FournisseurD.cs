@@ -9,10 +9,19 @@ namespace Pharmacie
     class FournisseurD
     {
         private List<Fournisseur> listeFournisseur;
-      
 
-			public Boolean ajouterFournisseur(List<Fournisseur>listeFournisseurAAjouter)
+		internal List<Fournisseur> ListFournisseurs { get => listeFournisseur; set => listeFournisseur = value; }
+
+
+		public Boolean ajouterFournisseur()
 		{
+			if (listeFournisseur != null && listeFournisseur.Count > 0)
+			{
+				foreach (Fournisseur frs in ListFournisseurs)
+				{
+					frs.ajouterFournisseur();
+				}
+			}
 			return true;
 		}
 
@@ -30,10 +39,10 @@ namespace Pharmacie
 		{
 			return true;
 		}
-
-		public void remplirListeFournisseur(object param)
+		public FournisseurD(List<Fournisseur> listFournisseurs)
 		{
-
+			this.ListFournisseurs = listeFournisseur;
 		}
+
 	}
 }

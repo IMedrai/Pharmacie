@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace Pharmacie
 {
@@ -30,7 +31,25 @@ namespace Pharmacie
 
 		public Boolean ajouterClient()
 		{
-			return true;
+			String insertRequest = "Insert into Client(cinClient,nomClient,prenomClient) values (@cinClient,@nomClient,@prenomClient)";
+
+			List<SqlParameter> listParams = new List<SqlParameter>();
+			SqlParameter param = new SqlParameter();
+			param.ParameterName = "@cinClient";
+			param.Value = this.cin;
+			listParams.Add(param);
+
+			param = new SqlParameter();
+			param.ParameterName = "@nomClient";
+			param.Value = this.nom;
+			listParams.Add(param);
+
+			param = new SqlParameter();
+			param.ParameterName = "@prenomClient";
+			param.Value = this.prenom;
+			listParams.Add(param);
+			Boolean resultInsert = Program.dbHandler.executeRequest(insertRequest, listParams);
+			return resultInsert;
 		}
 
 

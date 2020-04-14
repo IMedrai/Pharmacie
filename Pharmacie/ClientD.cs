@@ -11,11 +11,23 @@ namespace Pharmacie
 
         private List<Client> listeClients;
 
+        internal List<Client> ListClients { get => listeClients; set => listeClients = value; }
 
-        public Boolean ajouterClient(List<Client> listeClientsAAjouter)
+        
+
+        public Boolean ajouterClient()
         {
+            if(listeClients != null && listeClients.Count >0)
+            {
+                foreach(Client patient in listeClients)
+                {
+                    patient.ajouterClient();
+
+                }
+            }
             return true;
         }
+
 
         public Boolean chercherClientParCin(List<Client> listeClientsAchercher)
         {
@@ -28,9 +40,11 @@ namespace Pharmacie
         }
 
 
-        public void remplirListeClients(Object param)
+        public ClientD(List<Client> listeClients)
         {
-
+            this.listeClients = listeClients;
         }
     }
 }
+
+

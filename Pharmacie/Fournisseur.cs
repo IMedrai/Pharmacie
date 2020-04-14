@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace Pharmacie
 {
@@ -27,7 +28,23 @@ namespace Pharmacie
 
 		public Boolean ajouterFournisseur()
 		{
-			return true;
+
+			String insertRequest = "Insert into Fournisseur (RCFournisseur, RSFournisseur) values (@RCFournisseur,@RSFournisseur)";
+
+			List<SqlParameter> listParams = new List<SqlParameter>();
+			SqlParameter param = new SqlParameter();
+			param.ParameterName = "@RCFournisseur";
+			param.Value = this.numeroRC;
+			listParams.Add(param);
+
+			param = new SqlParameter();
+			param.ParameterName = "@RSFournisseur";
+			param.Value = this.raisonSociale;
+			listParams.Add(param);
+
+		
+			Boolean resultInsert = Program.dbHandler.executeRequest(insertRequest, listParams);
+			return resultInsert;
 		}
 
 		public Boolean modifierFournisseur()
@@ -44,9 +61,6 @@ namespace Pharmacie
 		{
 			return true;
 		}
-
-
-
 
 	}
 }
