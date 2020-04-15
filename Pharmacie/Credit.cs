@@ -32,12 +32,12 @@ namespace Pharmacie
 		}
 
 
-		private Credit()
+		public Credit()
 		{
 		}
 		
 
-		private Credit(DateTime dateCredit, string cin, double prix, double montantCredit)
+		public Credit(DateTime dateCredit, string cin, double montantCredit)
 		{
 			this.dateCredit = dateCredit;
 			this.cin = cin;

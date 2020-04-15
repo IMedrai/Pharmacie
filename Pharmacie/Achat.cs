@@ -10,7 +10,7 @@ namespace Pharmacie
     {
 		private string refProduit;
 		private int numeroRC;
-		private string typePayement;
+		private string typePaiement;
 
 
 
@@ -28,21 +28,21 @@ namespace Pharmacie
 
 		
 
-		public string TypePayement
+		public string TypePaiement
 		{
-			get { return typePayement; }
-			set { typePayement = value; }
+			get { return typePaiement; }
+			set { typePaiement = value; }
 		}
 
-		private Achat()
+		public Achat()
 		{
 		}
 
-		private Achat (string refProduit, int numeroRC, string typePayement)
+		public Achat (string refProduit, int numeroRC, string typePaiement)
 		{
 			this.refProduit = refProduit;
 			this.numeroRC = numeroRC;
-			this.typePayement = typePayement;
+			this.typePaiement = typePaiement;
 			
 		}
 	}

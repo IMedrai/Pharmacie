@@ -28,6 +28,9 @@ namespace Pharmacie
 
 		public Boolean ajouterFournisseur()
 		{
+			// 
+
+
 
 			String insertRequest = "Insert into Fournisseur (RCFournisseur, RSFournisseur) values (@RCFournisseur,@RSFournisseur)";
 

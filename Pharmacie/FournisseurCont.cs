@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pharmacie
 {
-    class FournisseurD
+    class FournisseurCont
     {
         private List<Fournisseur> listeFournisseur;
 
@@ -15,7 +15,7 @@ namespace Pharmacie
 
 		public Boolean ajouterFournisseur()
 		{
-			if (listeFournisseur != null && listeFournisseur.Count > 0)
+			if (!frs.NumeroRC.Equals(frsAdd.NumeroRC)) // if (listeFournisseur != null && listeFournisseur.Count > 0)
 			{
 				foreach (Fournisseur frs in ListFournisseurs)
 				{
@@ -27,6 +27,15 @@ namespace Pharmacie
 
 		public Boolean modifierFournisseur(List<Fournisseur> listeFournisseurAmodifier)
 		{
+			if (listeFournisseur != null && listeFournisseur.Count > 0) // nous n'avons rien
+			{
+				foreach (Fournisseur frs in ListFournisseurs)
+				{
+					frs.modifierFournisseur();
+				}
+			}
+
+
 			return true;
 		}
 
@@ -39,7 +48,7 @@ namespace Pharmacie
 		{
 			return true;
 		}
-		public FournisseurD(List<Fournisseur> listFournisseurs)
+		public FournisseurCont(List<Fournisseur> listFournisseurs)
 		{
 			this.ListFournisseurs = listeFournisseur;
 		}

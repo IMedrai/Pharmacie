@@ -47,6 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Achat.cs" />
+    <Compile Include="AchatCont.cs" />
+    <Compile Include="AchatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AchatForm.Designer.cs">
+      <DependentUpon>AchatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ADO.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientD.cs" />
@@ -57,8 +64,27 @@
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Credit.cs" />
+    <Compile Include="CreditCont.cs" />
+    <Compile Include="CreditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreditForm.Designer.cs">
+      <DependentUpon>CreditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FactureClient.cs" />
+    <Compile Include="FactureClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FactureClientForm.Designer.cs">
+      <DependentUpon>FactureClientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FactureFournisseur.cs" />
+    <Compile Include="FactureFournisseurForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FactureFournisseurForm.Designer.cs">
+      <DependentUpon>FactureFournisseurForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,7 +92,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Fournisseur.cs" />
-    <Compile Include="FournisseurD.cs" />
+    <Compile Include="FournisseurCont.cs" />
     <Compile Include="FournisseurForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,9 +118,30 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stock.cs" />
+    <Compile Include="StockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockForm.Designer.cs">
+      <DependentUpon>StockForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vente.cs" />
+    <Compile Include="VenteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VenteForm.Designer.cs">
+      <DependentUpon>VenteForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AchatForm.resx">
+      <DependentUpon>AchatForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreditForm.resx">
+      <DependentUpon>CreditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FactureClientForm.resx">
+      <DependentUpon>FactureClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FournisseurForm.resx">
       <DependentUpon>FournisseurForm.cs</DependentUpon>
@@ -114,6 +161,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StockForm.resx">
+      <DependentUpon>StockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VenteForm.resx">
+      <DependentUpon>VenteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

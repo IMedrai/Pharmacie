@@ -18,25 +18,23 @@ namespace Pharmacie
         }
 
         private void button_ajouter_Click(object sender, EventArgs e)
-        {if(textBox1_RC.Text == null || textBox1_RC.Text.Length < 0)
+        {
+            if (textBox1_RC.Text == null || textBox1_RC.Text.Length < 0)
             {
                 MessageBox.Show(" Veuillez renseigner le Numéro RC de votre fournisseur ");
             }
             List<Fournisseur> listFournisseurs = (List<Fournisseur>)dataGridView1.DataSource;
             dataGridView1.DataSource = null;
-            if ( listFournisseurs == null)
+            if (listFournisseurs == null)
             {
                 listFournisseurs = new List<Fournisseur>();
-
             }
 
             Fournisseur frs = lireFournisseurDepuisFormulaire();
             listFournisseurs.Add(frs);
             dataGridView1.DataSource = listFournisseurs;
             button_vider_Click(sender, e);
-
         }
-
 
         private Fournisseur lireFournisseurDepuisFormulaire()
         {
@@ -49,6 +47,7 @@ namespace Pharmacie
         {
             return (List<Fournisseur>)dataGridView1.DataSource;
         }
+
 
         private void button_modifier_Click(object sender, EventArgs e)
         {
@@ -110,14 +109,21 @@ namespace Pharmacie
 
         private void button_appliquer_Click(object sender, EventArgs e)
         {
+            
 
-            FournisseurD frsD = new FournisseurD(lireListFournisseurs());
-            Boolean result = frsD.ajouterFournisseur();
+            FournisseurCont frsCont = new FournisseurCont(lireListFournisseurs());
+            Boolean result = frsCont.ajouterFournisseur();
             if (result == false)
             {
                 MessageBox.Show("Un problème est survenu lors de l'insertion des fournisseurs");
             }
         }
+
+        private void button_chercher_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 
+// si 

@@ -1,6 +1,6 @@
 ﻿namespace Pharmacie
 {
-    partial class ClientForm
+    partial class AchatForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox3_prenom = new System.Windows.Forms.TextBox();
-            this.textBox2_nom = new System.Windows.Forms.TextBox();
-            this.textBox1_cin = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button_appliquer = new System.Windows.Forms.Button();
             this.button_vider = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -43,70 +37,16 @@
             this.button_chercher = new System.Windows.Forms.Button();
             this.button_modifier = new System.Windows.Forms.Button();
             this.button_ajouter = new System.Windows.Forms.Button();
+            this.textBox3_typePaiement = new System.Windows.Forms.TextBox();
+            this.textBox2_numeroRC = new System.Windows.Forms.TextBox();
+            this.textBox1_refProduit = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBox3_prenom
-            // 
-            this.textBox3_prenom.Location = new System.Drawing.Point(252, 167);
-            this.textBox3_prenom.Name = "textBox3_prenom";
-            this.textBox3_prenom.Size = new System.Drawing.Size(169, 26);
-            this.textBox3_prenom.TabIndex = 6;
-            // 
-            // textBox2_nom
-            // 
-            this.textBox2_nom.Location = new System.Drawing.Point(252, 120);
-            this.textBox2_nom.Name = "textBox2_nom";
-            this.textBox2_nom.Size = new System.Drawing.Size(169, 26);
-            this.textBox2_nom.TabIndex = 5;
-            // 
-            // textBox1_cin
-            // 
-            this.textBox1_cin.Location = new System.Drawing.Point(252, 68);
-            this.textBox1_cin.Name = "textBox1_cin";
-            this.textBox1_cin.Size = new System.Drawing.Size(169, 26);
-            this.textBox1_cin.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 123);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nom";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "CIN";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button_appliquer);
-            this.groupBox1.Controls.Add(this.button_vider);
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Controls.Add(this.button_chercher);
-            this.groupBox1.Controls.Add(this.button_modifier);
-            this.groupBox1.Controls.Add(this.button_ajouter);
-            this.groupBox1.Controls.Add(this.textBox3_prenom);
-            this.groupBox1.Controls.Add(this.textBox2_nom);
-            this.groupBox1.Controls.Add(this.textBox1_cin);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(36, 46);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1046, 667);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Clients";
             // 
             // button_appliquer
             // 
@@ -139,29 +79,29 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(521, 237);
+            this.dataGridView1.Size = new System.Drawing.Size(779, 237);
             this.dataGridView1.TabIndex = 11;
             // 
             // Column1
             // 
-            this.Column1.DataPropertyName = "CIN";
-            this.Column1.HeaderText = "CIN";
+            this.Column1.DataPropertyName = "refProduit";
+            this.Column1.HeaderText = "Référence Produit";
             this.Column1.MinimumWidth = 8;
             this.Column1.Name = "Column1";
             this.Column1.Width = 150;
             // 
             // Column2
             // 
-            this.Column2.DataPropertyName = "Nom";
-            this.Column2.HeaderText = "Nom";
+            this.Column2.DataPropertyName = "numeroRC";
+            this.Column2.HeaderText = "Numéro RC";
             this.Column2.MinimumWidth = 8;
             this.Column2.Name = "Column2";
             this.Column2.Width = 150;
             // 
             // Column3
             // 
-            this.Column3.DataPropertyName = "Prenom";
-            this.Column3.HeaderText = "Prénom";
+            this.Column3.DataPropertyName = "typePaiement";
+            this.Column3.HeaderText = "Type de Paiement";
             this.Column3.MinimumWidth = 8;
             this.Column3.Name = "Column3";
             this.Column3.Width = 150;
@@ -195,45 +135,105 @@
             this.button_ajouter.UseVisualStyleBackColor = true;
             this.button_ajouter.Click += new System.EventHandler(this.button_ajouter_Click);
             // 
+            // textBox3_typePaiement
+            // 
+            this.textBox3_typePaiement.Location = new System.Drawing.Point(252, 167);
+            this.textBox3_typePaiement.Name = "textBox3_typePaiement";
+            this.textBox3_typePaiement.Size = new System.Drawing.Size(169, 26);
+            this.textBox3_typePaiement.TabIndex = 6;
+            // 
+            // textBox2_numeroRC
+            // 
+            this.textBox2_numeroRC.Location = new System.Drawing.Point(252, 120);
+            this.textBox2_numeroRC.Name = "textBox2_numeroRC";
+            this.textBox2_numeroRC.Size = new System.Drawing.Size(169, 26);
+            this.textBox2_numeroRC.TabIndex = 5;
+            // 
+            // textBox1_refProduit
+            // 
+            this.textBox1_refProduit.Location = new System.Drawing.Point(252, 68);
+            this.textBox1_refProduit.Name = "textBox1_refProduit";
+            this.textBox1_refProduit.Size = new System.Drawing.Size(169, 26);
+            this.textBox1_refProduit.TabIndex = 4;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(34, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 20);
+            this.label3.Size = new System.Drawing.Size(135, 20);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Prénom";
+            this.label3.Text = "Type de paiement";
             // 
-            // ClientForm
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(34, 123);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Numéro RC";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 74);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Référence Produit";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button_appliquer);
+            this.groupBox1.Controls.Add(this.button_vider);
+            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.button_chercher);
+            this.groupBox1.Controls.Add(this.button_modifier);
+            this.groupBox1.Controls.Add(this.button_ajouter);
+            this.groupBox1.Controls.Add(this.textBox3_typePaiement);
+            this.groupBox1.Controls.Add(this.textBox2_numeroRC);
+            this.groupBox1.Controls.Add(this.textBox1_refProduit);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(64, 43);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(877, 603);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Achats";
+            // 
+            // AchatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1109, 725);
+            this.ClientSize = new System.Drawing.Size(1041, 686);
             this.Controls.Add(this.groupBox1);
-            this.Name = "ClientForm";
-            this.Text = "ClientForm";
+            this.Name = "AchatForm";
+            this.Text = "AchatForm";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox3_prenom;
-        private System.Windows.Forms.TextBox textBox2_nom;
-        private System.Windows.Forms.TextBox textBox1_cin;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button_appliquer;
         private System.Windows.Forms.Button button_vider;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button_chercher;
         private System.Windows.Forms.Button button_modifier;
         private System.Windows.Forms.Button button_ajouter;
+        private System.Windows.Forms.TextBox textBox3_typePaiement;
+        private System.Windows.Forms.TextBox textBox2_numeroRC;
+        private System.Windows.Forms.TextBox textBox1_refProduit;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

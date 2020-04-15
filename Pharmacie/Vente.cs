@@ -11,7 +11,7 @@ namespace Pharmacie
 		private string refVente;
 		private string refProduit;
 		private string cin;
-		private string modePayement;
+		private string modePaiement;
 
 		public string RefVente
 		{
@@ -30,23 +30,23 @@ namespace Pharmacie
 			set { cin = value; }
 		}
 
-		public string ModePayement
+		public string ModePaiement
 		{
-			get { return modePayement; }
-			set { modePayement = value; }
+			get { return modePaiement; }
+			set { modePaiement = value; }
 
 		}
 
-		private Vente()
+		public Vente()
 		{
 
 		}
-		private Vente(string refVente, string refProduit, string cin, string modePayement)
+		public Vente(string refVente, string refProduit, string cin, string modePaiement)
 		{
 			this.refVente = refVente;
 			this.refProduit = refProduit;
 			this.cin = cin;
-			this.modePayement = modePayement;
+			this.modePaiement = modePaiement;
 		}
 
 	}
