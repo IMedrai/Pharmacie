@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,5 +46,49 @@ namespace Pharmacie
 			this.typePaiement = typePaiement;
 			
 		}
+
+
+		public Boolean ajouterAchat()
+		{
+			String insertRequest = "Insert into achat(refProduit,numeroRC,typePaiement) values (@refProduit,@numeroRC,@typePaiement)";
+			List<SqlParameter> listParams = new List<SqlParameter>();
+			SqlParameter param = new SqlParameter();
+			param.ParameterName = "@refProduit";
+			param.Value = this.refProduit;
+			listParams.Add(param);
+
+			param = new SqlParameter();
+			param.ParameterName = "@numeroRC";
+			param.Value = this.numeroRC;
+			listParams.Add(param);
+
+			param = new SqlParameter();
+			param.ParameterName = "@typePaiement";
+			param.Value = this.typePaiement;
+			listParams.Add(param);
+
+			
+			Boolean resultInsert = Program.dbHandler.executeRequest(insertRequest, listParams);
+			return resultInsert;
+		}
+
+		public Boolean modifierAchat()
+		{
+			return true;
+		}
+
+		public Boolean chercherAchatParRef()
+		{
+			return true;
+		}
+
+		public Boolean chercherProduitParCodeBar()
+		{
+			return true;
+		}
+
+
+
+
 	}
 }

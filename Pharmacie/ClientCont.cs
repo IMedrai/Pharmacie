@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pharmacie
 {
-    class ClientD
+    class ClientCont
     {
 
         private List<Client> listeClients;
@@ -40,7 +40,7 @@ namespace Pharmacie
         }
 
 
-        public ClientD(List<Client> listeClients)
+        public ClientCont(List<Client> listeClients)
         {
             this.listeClients = listeClients;
         }

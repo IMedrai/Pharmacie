@@ -48,6 +48,7 @@ namespace Pharmacie
 			param.ParameterName = "@prenomClient";
 			param.Value = this.prenom;
 			listParams.Add(param);
+
 			Boolean resultInsert = Program.dbHandler.executeRequest(insertRequest, listParams);
 			return resultInsert;
 		}

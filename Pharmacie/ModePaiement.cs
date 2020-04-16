@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,28 @@ namespace Pharmacie
 		{
 			return true;
 		}
+
+		public Boolean ajouterMontant()
+		{
+			String insertRequest= " insert into ( montantMin, montantMax) value ( @montantMin, @montantMax)";
+			List<SqlParameter> listParams = new List<SqlParameter>();
+			SqlParameter param = new SqlParameter();
+			param.ParameterName = "@montantMin";
+			param.Value = this.montantMin;
+			listParams.Add(param);
+
+
+			param = new SqlParameter();
+			param.ParameterName = "@montantMax";
+			param.Value = this.montantMax;
+			listParams.Add(param);
+
+
+			Boolean resultInsert = Program.dbHandler.executeRequest(insertRequest, listParams);
+			return resultInsert;
+
+
+
 
 		public Boolean modifierMontantMin()
 		{

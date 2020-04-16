@@ -56,7 +56,7 @@
     </Compile>
     <Compile Include="ADO.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="ClientD.cs" />
+    <Compile Include="ClientCont.cs" />
     <Compile Include="ClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,13 +77,6 @@
     </Compile>
     <Compile Include="FactureClientForm.Designer.cs">
       <DependentUpon>FactureClientForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FactureFournisseur.cs" />
-    <Compile Include="FactureFournisseurForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FactureFournisseurForm.Designer.cs">
-      <DependentUpon>FactureFournisseurForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

@@ -105,7 +105,7 @@ namespace Pharmacie
 
         private void button_appliquer_Click(object sender, EventArgs e)
         {
-            ClientD patientD = new ClientD(LireListClients());
+            ClientCont patientD = new ClientCont(LireListClients());
             Boolean result = patientD.ajouterClient();
             if (result == false)
 
