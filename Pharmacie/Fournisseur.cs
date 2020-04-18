@@ -46,7 +46,7 @@ namespace Pharmacie
 			listParams.Add(param);
 
 		
-			Boolean resultInsert = Program.dbHandler.executeRequest(insertRequest, listParams);
+			Boolean resultInsert = Program.dbHandler.executeNoOutputRequest(insertRequest, listParams);
 			return resultInsert;
 		}
 

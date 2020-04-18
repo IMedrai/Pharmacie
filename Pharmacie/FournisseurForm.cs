@@ -111,12 +111,12 @@ namespace Pharmacie
         {
             
 
-            FournisseurCont frsCont = new FournisseurCont(lireListFournisseurs());
+            /*FournisseurCont frsCont = new FournisseurCont(lireListFournisseurs());
             Boolean result = frsCont.ajouterFournisseur();
             if (result == false)
             {
                 MessageBox.Show("Un problème est survenu lors de l'insertion des fournisseurs");
-            }
+            }*/
         }
 
         private void button_chercher_Click(object sender, EventArgs e)

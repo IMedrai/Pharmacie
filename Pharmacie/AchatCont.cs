@@ -24,8 +24,9 @@ namespace Pharmacie
                 {
                     ac.ajouterAchat();
                 }
-                return true;
+                
             }
+            return true;
         }
 
             public Boolean modifierAchat()
@@ -59,7 +60,6 @@ namespace Pharmacie
             }
 
 
-    }
     }
 }
 

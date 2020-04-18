@@ -35,7 +35,7 @@ namespace Pharmacie
             }
         }
 
-        public Boolean executeRequest(String request, List<SqlParameter> param)
+        public Boolean executeNoOutputRequest(String request, List<SqlParameter> param)
         {
             Boolean resultRequest = true;
             connecter();
@@ -48,6 +48,18 @@ namespace Pharmacie
                 resultRequest = false;
             }
             return resultRequest;
+        }
+
+        public SqlDataReader executeRequest(String request, List<SqlParameter> param)
+        {
+            Boolean resultRequest = true;
+            connecter();
+            SqlCommand command = new SqlCommand(request);
+            command.Connection = this.con;
+            command.Parameters.AddRange(param.ToArray());
+            SqlDataReader sqlDataReader = command.ExecuteReader();
+            
+            return sqlDataReader;
         }
 
         public ADO(String connectionString)

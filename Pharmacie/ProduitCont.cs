@@ -14,7 +14,7 @@ namespace Pharmacie
 
         public Boolean ajouterOuModifierProduits()
         {
-            if (listeProduits != null && listeProduits.Count > 0)
+            if (listeProduits != null && listeProduits.Count > 0) // && prod.refProduit.listProduits.count=1)
             {
                 foreach(Produit prod in listeProduits)
                 {
@@ -22,6 +22,7 @@ namespace Pharmacie
                 }
             }
             return true;
+            // if (prod.refProduit.listProduits.count>1){ MessageBox.Show("Le produit existe déjà")
         }
 
         public Boolean chercherProduitsParRef(List<Produit> listeProduitsAChercher)

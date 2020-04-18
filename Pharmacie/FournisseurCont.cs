@@ -13,7 +13,7 @@ namespace Pharmacie
 		internal List<Fournisseur> ListFournisseurs { get => listeFournisseur; set => listeFournisseur = value; }
 
 
-		public Boolean ajouterFournisseur()
+		/*public Boolean ajouterFournisseur()
 		{
 			if (!frs.NumeroRC.Equals(frsAdd.NumeroRC)) // if (listeFournisseur != null && listeFournisseur.Count > 0)
 			{
@@ -23,7 +23,7 @@ namespace Pharmacie
 				}
 			}
 			return true;
-		}
+		}*/
 
 		public Boolean modifierFournisseur(List<Fournisseur> listeFournisseurAmodifier)
 		{

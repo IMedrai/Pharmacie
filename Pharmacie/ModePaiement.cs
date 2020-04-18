@@ -35,7 +35,7 @@ namespace Pharmacie
 
 		public Boolean ajouterMontant()
 		{
-			String insertRequest= " insert into ( montantMin, montantMax) value ( @montantMin, @montantMax)";
+			String insertRequest = " insert into ( montantMin, montantMax) value ( @montantMin, @montantMax)";
 			List<SqlParameter> listParams = new List<SqlParameter>();
 			SqlParameter param = new SqlParameter();
 			param.ParameterName = "@montantMin";
@@ -49,10 +49,10 @@ namespace Pharmacie
 			listParams.Add(param);
 
 
-			Boolean resultInsert = Program.dbHandler.executeRequest(insertRequest, listParams);
+			Boolean resultInsert = Program.dbHandler.executeNoOutputRequest(insertRequest, listParams);
 			return resultInsert;
 
-
+		}
 
 
 		public Boolean modifierMontantMin()

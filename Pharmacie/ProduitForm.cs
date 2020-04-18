@@ -36,7 +36,7 @@ namespace Pharmacie
                 listProduits = new List<Produit>();
             }
             Produit prod = lireProduitDepuisFormulaire();
-            listProduits.Add(prod);
+            listProduits.Add(prod); 
             dataGridView1.DataSource = listProduits;
             button_vider_Click(sender, e);
 
@@ -56,6 +56,12 @@ namespace Pharmacie
         private List<Produit> lireListProduits()
         {
             return (List<Produit>)dataGridView1.DataSource;
+        }
+
+        private void setListProduits(List<Produit> listProduits)
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = listProduits;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -86,10 +92,7 @@ namespace Pharmacie
                     foreach (DataGridViewRow ligne in dataGridView1.SelectedRows)
                     {
                         Produit prod = (Produit)ligne.DataBoundItem;
-                        textBox1.Text = prod.RefProduit;
-                        textBox2.Text = prod.CodeBar;
-                        textBox3.Text = prod.Prix.ToString();
-                        textBox4.Text = prod.Libelle;
+                        setFormulaire(prod);
                     }
                     textBox1.ReadOnly = true;
                 }
@@ -97,6 +100,14 @@ namespace Pharmacie
                
             }
             
+        }
+
+        private void setFormulaire(Produit prod)
+        {
+            textBox1.Text = prod.RefProduit;
+            textBox2.Text = prod.CodeBar;
+            textBox3.Text = prod.Prix.ToString();
+            textBox4.Text = prod.Libelle;
         }
 
         private void button_vider_Click(object sender, EventArgs e)
@@ -116,6 +127,48 @@ namespace Pharmacie
             if (result == false)
             {
                 MessageBox.Show("Un problème est survenu lors de l'insertion des produits");
+            }
+        }
+
+        private void button_chercher_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text != null && textBox1.Text.Length > 0)
+            {
+                Boolean checkDB = true;
+                List < Produit > listProduitsExistant = lireListProduits();
+                if (listProduitsExistant != null && listProduitsExistant.Count > 0)
+                {
+                    foreach (Produit prodExistant in listProduitsExistant)
+                    {
+                        if (textBox1.Text.Equals(prodExistant.RefProduit))
+                        {
+                            setFormulaire(prodExistant);
+                            checkDB = false;
+                            break;
+                        }
+                    }
+                }
+                if (checkDB)
+                {
+                    Produit prodRecherche = new Produit();
+                    prodRecherche.RefProduit = textBox1.Text;
+                    Boolean productFound = prodRecherche.chercherProduitParRef();
+                    if (productFound)
+                    {
+                        List<Produit> listProduits = lireListProduits();
+                        if (listProduits == null)
+                        {
+                            listProduits = new List<Produit>();
+                        }
+                        listProduits.Add(prodRecherche);
+                        setListProduits(listProduits);
+                        setFormulaire(prodRecherche);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Le produit ["+textBox1.Text+"] n'existe pas");
+                    }
+                }
             }
         }
     }

@@ -149,6 +149,7 @@
             this.button_chercher.TabIndex = 10;
             this.button_chercher.Text = "Chercher";
             this.button_chercher.UseVisualStyleBackColor = true;
+            this.button_chercher.Click += new System.EventHandler(this.button_chercher_Click);
             // 
             // button_modifier
             // 
