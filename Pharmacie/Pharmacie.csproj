@@ -99,7 +99,7 @@
       <DependentUpon>ModePaiementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ModePaiement.cs" />
-    <Compile Include="ModePaiementD.cs" />
+    <Compile Include="ModePaiementCont.cs" />
     <Compile Include="Produit.cs" />
     <Compile Include="ProduitCont.cs" />
     <Compile Include="ProduitForm.cs">
@@ -118,6 +118,7 @@
       <DependentUpon>StockForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Vente.cs" />
+    <Compile Include="VenteCont.cs" />
     <Compile Include="VenteForm.cs">
       <SubType>Form</SubType>
     </Compile>

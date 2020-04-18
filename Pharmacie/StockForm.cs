@@ -16,5 +16,15 @@ namespace Pharmacie
         {
             InitializeComponent();
         }
+
+        private void textBox2_qte_TextChanged(object sender, EventArgs e)
+        {
+            //qte achat - qte vente
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

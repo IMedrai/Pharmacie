@@ -16,6 +16,11 @@ namespace Pharmacie
 		private Double prix;
 		private String libelle;
 
+		private static readonly String REF_PROD_DB = "refProduit";
+		private static readonly String LIBELLE_PROD_DB = "libelleProduit";
+		private static readonly String CODE_BARRE_PROD_DB = "codebarreProduit";
+		private static readonly String PRIX_PROD_DB = "prixProduit";
+
 
 
 		public string RefProduit { get => refProduit; set => refProduit = value; }
@@ -97,8 +102,12 @@ namespace Pharmacie
 			param.ParameterName = "@refProduit";
 			param.Value = this.refProduit;
 			listParams.Add(param);
-			SqlDataReader reader = Program.dbHandler.executeRequest(insertRequest, listParams);
-			return readProduitFromSQLReader(reader);
+			List<Dictionary<String,Object>> listResults = Program.dbHandler.executeRequest(insertRequest, listParams);
+			if (listResults == null || listResults.Count <= 0)
+			{
+				return false;
+			}
+			return readProduitFromDictionnary(listResults[0]);
 		}
 
 		public Boolean chercherProduitParCodeBar()
@@ -116,20 +125,24 @@ namespace Pharmacie
 			return isEmpty;
 		}
 
-		private Boolean readProduitFromSQLReader(SqlDataReader reader)
+		public Boolean readProduitFromDictionnary(Dictionary<String, Object> element)
 		{
-			reader.Read();
-			if (reader == null || !reader.HasRows || reader.GetString(0) == null || reader.GetString(0).Length <= 0)
-			{
-				reader.Close();
-				return false;
-			}
-			this.RefProduit = reader.GetString(0);
-			this.Libelle = reader.GetString(1);
-			this.CodeBar = reader.GetString(2);
-			//this.Prix = System.Convert.ToDouble(reader.GetFloat(3));
-			this.Prix = reader.GetDouble(3);
-			reader.Close();
+			Object obj = null;
+			element.TryGetValue(REF_PROD_DB, out obj);
+			this.RefProduit = (String)obj;
+
+			obj = null;
+			element.TryGetValue(LIBELLE_PROD_DB, out obj);
+			this.Libelle = (String)obj;
+
+			obj = null;
+			element.TryGetValue(CODE_BARRE_PROD_DB, out obj);
+			this.CodeBar = (String)obj;
+
+			obj = null;
+			element.TryGetValue(PRIX_PROD_DB, out obj);
+			this.Prix = (Double)obj;
+			
 			return true;
 		}
 

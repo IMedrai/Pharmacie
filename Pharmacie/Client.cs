@@ -12,6 +12,9 @@ namespace Pharmacie
 		private string cin ;
 		private string nom;
 		private string prenom;
+		private static readonly String CIN_CLIENT_DB = "cin";
+		private static readonly String PRENOM_CLIENT_DB = "prenom";
+		private static readonly String NOM_CLIENT_DB = "nom";
 
 		public string Cin { get => cin; set => cin = value; }
 		public string Nom { get => nom; set => nom = value; }
@@ -86,8 +89,29 @@ namespace Pharmacie
 			param.ParameterName = "@cinClient";
 			param.Value = this.Cin;
 			listParams.Add(param);
-			SqlDataReader reader = Program.dbHandler.executeRequest(insertRequest, listParams);
-			return readClientFromSQLReader(reader);
+			List<Dictionary<String, Object>> listResults = Program.dbHandler.executeRequest(insertRequest, listParams);
+			if (listResults == null || listResults.Count <= 0)
+			{
+				return false;
+			}
+			return readClienttFromDictionnary(listResults[0]);
+		}
+
+
+		public Boolean readClienttFromDictionnary(Dictionary<String, Object> element)
+		{
+			Object obj = null;
+			element.TryGetValue(CIN_CLIENT_DB, out obj);
+			this.Cin = (String)obj;
+
+			obj = null;
+			element.TryGetValue(NOM_CLIENT_DB, out obj);
+			this.Nom = (String)obj;
+
+			obj = null;
+			element.TryGetValue(PRENOM_CLIENT_DB, out obj);
+			this.Prenom = (String)obj;
+			return true;
 		}
 
 		private Boolean readClientFromSQLReader(SqlDataReader reader)

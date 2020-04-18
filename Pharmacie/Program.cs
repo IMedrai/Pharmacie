@@ -10,6 +10,7 @@ namespace Pharmacie
     {
 
         public static ADO dbHandler;
+        public static ModePaiementCont modePaiementCont;
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
@@ -18,8 +19,9 @@ namespace Pharmacie
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            modePaiementCont = new ModePaiementCont();
             dbHandler = new ADO("Data Source = SSR\\SQLEXPRESS; Initial Catalog = Pharmacie; Integrated Security = True");
-            Application.Run(new ClientForm());
+            Application.Run(new VenteForm());
         }
     }
 }

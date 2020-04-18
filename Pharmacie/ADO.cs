@@ -39,10 +39,10 @@ namespace Pharmacie
         {
             Boolean resultRequest = true;
             connecter();
-            SqlCommand command = new SqlCommand(request);
-            command.Connection = this.con;
-            command.Parameters.AddRange(param.ToArray());
-            int result = command.ExecuteNonQuery();
+            cmd = new SqlCommand(request);
+            cmd.Connection = this.con;
+            cmd.Parameters.AddRange(param.ToArray());
+            int result = cmd.ExecuteNonQuery();
             if (result == -1)
             {
                 resultRequest = false;
@@ -50,14 +50,52 @@ namespace Pharmacie
             return resultRequest;
         }
 
-        public SqlDataReader executeRequest(String request, List<SqlParameter> param)
+        public String getSqRefVente()
+        {
+            String selectQuery = "select next value for dbo.sq_ref_vente as 'sq'";
+            List <Dictionary<String, Object>> listResults = this.executeRequest(selectQuery, null);
+            Object obj = null;
+            listResults[0].TryGetValue("sq", out obj);
+            Console.WriteLine(obj.GetType());
+            return obj.ToString();
+        }
+
+        public List<Dictionary<String, Object>> executeRequest(String request, List<SqlParameter> param)
         {
             connecter();
-            SqlCommand command = new SqlCommand(request);
-            command.Connection = this.con;
-            command.Parameters.AddRange(param.ToArray());
-            SqlDataReader sqlDataReader = command.ExecuteReader();
-            return sqlDataReader;
+            cmd = new SqlCommand(request);
+            cmd.Connection = this.con;
+            if (param != null && param.Count > 0)
+            {
+                cmd.Parameters.AddRange(param.ToArray());
+            }
+            
+            dr = cmd.ExecuteReader();
+            Console.WriteLine(this.dr.VisibleFieldCount);
+            return setReaderDataInDict();
+        }
+
+        public List<Dictionary<String, Object>> setReaderDataInDict()
+        {
+            List<Dictionary<String, Object>> listMapData = new List<Dictionary<string, object>>();
+            Dictionary<String, Object> mapData = null ;
+            while (dr.Read())
+            {
+                if (dr == null || !dr.HasRows)
+                {
+                    continue;
+                }
+                mapData = new Dictionary<string, object>();
+                for (int i = 0;i < dr.VisibleFieldCount;i++)
+                {
+                    mapData.Add(dr.GetName(i), dr.GetValue(i));
+                }
+                listMapData.Add(mapData);
+
+
+            }
+            dr.Close();
+            return listMapData;
         }
 
         public ADO(String connectionString)

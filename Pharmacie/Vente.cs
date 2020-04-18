@@ -10,45 +10,24 @@ namespace Pharmacie
     {
 		private string refVente;
 		private string refProduit;
-		private string cin;
 		private string modePaiement;
+		private DateTime dateVente;
+		private Double prixUnitaire;
+		private int qnt;
 
-		public string RefVente
-		{
-			get { return refVente; }
-			set { refVente = value; }
-		}
-		public string RefProduit
-		{
-			get { return refProduit; }
-			set { refProduit = value; }
-		}
 
-		public string Cin
-		{
-			get { return cin; }
-			set { cin = value; }
-		}
-
-		public string ModePaiement
-		{
-			get { return modePaiement; }
-			set { modePaiement = value; }
-
-		}
 
 		public Vente()
 		{
 
 		}
-		public Vente(string refVente, string refProduit, string cin, string modePaiement)
-		{
-			this.refVente = refVente;
-			this.refProduit = refProduit;
-			this.cin = cin;
-			this.modePaiement = modePaiement;
-		}
 
+		public string RefVente { get => refVente; set => refVente = value; }
+		public string RefProduit { get => refProduit; set => refProduit = value; }
+		public string ModePaiement { get => modePaiement; set => modePaiement = value; }
+		public DateTime DateVente { get => dateVente; set => dateVente = value; }
+		public double PrixUnitaire { get => prixUnitaire; set => prixUnitaire = value; }
+		public int Qnt { get => qnt; set => qnt = value; }
 	}
 
 }

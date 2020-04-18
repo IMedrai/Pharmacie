@@ -40,7 +40,7 @@ namespace Pharmacie
             Achat ac = new Achat();
             ac.RefProduit = textBox1_refProduit.Text;
             ac.NumeroRC = int.Parse(textBox2_numeroRC.Text);
-            ac.TypePaiement = textBox3_typePaiement.Text;
+            ac.TypePaiement = textBox5_typePaiement.Text;
             return ac;
         }
 
@@ -80,7 +80,7 @@ namespace Pharmacie
                         Achat ac = (Achat)ligne.DataBoundItem;
                         textBox1_refProduit.Text = ac.RefProduit;
                         textBox2_numeroRC.Text = ac.NumeroRC.ToString();
-                        textBox3_typePaiement.Text = ac.TypePaiement;
+                        textBox5_typePaiement.Text = ac.TypePaiement;
                     }
                     textBox1_refProduit.ReadOnly = true;
 
