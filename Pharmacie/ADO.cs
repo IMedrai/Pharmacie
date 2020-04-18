@@ -52,13 +52,11 @@ namespace Pharmacie
 
         public SqlDataReader executeRequest(String request, List<SqlParameter> param)
         {
-            Boolean resultRequest = true;
             connecter();
             SqlCommand command = new SqlCommand(request);
             command.Connection = this.con;
             command.Parameters.AddRange(param.ToArray());
             SqlDataReader sqlDataReader = command.ExecuteReader();
-            
             return sqlDataReader;
         }
 

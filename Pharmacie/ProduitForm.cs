@@ -86,6 +86,7 @@ namespace Pharmacie
                         break;
                     }
                     dataGridView1.DataSource = listProduits;
+                    button_vider_Click(sender,e);
                 }
                 else
                 {
@@ -127,6 +128,10 @@ namespace Pharmacie
             if (result == false)
             {
                 MessageBox.Show("Un problème est survenu lors de l'insertion des produits");
+            }
+            else
+            {
+                MessageBox.Show("Toutes les modifications ont été appliquées");
             }
         }
 

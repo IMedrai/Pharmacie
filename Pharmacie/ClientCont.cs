@@ -15,27 +15,27 @@ namespace Pharmacie
 
         
 
-        public Boolean ajouterClient()
+        public Boolean ajouterOuModifierClient()
         {
-            if(listeClients != null && listeClients.Count >0)
+            if (listeClients != null && listeClients.Count >0)
             {
-                foreach(Client patient in listeClients)
+                foreach(Client client in listeClients)
                 {
-                    patient.ajouterClient();
+                    Client clientRecherche = new Client();
+                    clientRecherche.Cin = client.Cin;
+                    Boolean exist = clientRecherche.chercherClientParCin();
+                    if (exist)
+                    {
+                        client.modifierClient();
+                    }
+                    else
+                    {
+                        client.ajouterClient();
+                    }
+                    
 
                 }
             }
-            return true;
-        }
-
-
-        public Boolean chercherClientParCin(List<Client> listeClientsAchercher)
-        {
-            return true;
-        }
-
-        public Boolean chercherClientParNom(List<Client> listeClientsAChercher)
-        {
             return true;
         }
 

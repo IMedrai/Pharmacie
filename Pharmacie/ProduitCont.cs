@@ -18,20 +18,19 @@ namespace Pharmacie
             {
                 foreach(Produit prod in listeProduits)
                 {
-                    prod.ajouterProduit();
+                    Produit prodRecherche = new Produit();
+                    prodRecherche.RefProduit = prod.RefProduit;
+                    Boolean exist = prodRecherche.chercherProduitParRef();
+                    if (exist)
+                    {
+                        prod.modifierProduit();
+                    }
+                    else
+                    {
+                        prod.ajouterProduit();
+                    }
                 }
             }
-            return true;
-            // if (prod.refProduit.listProduits.count>1){ MessageBox.Show("Le produit existe déjà")
-        }
-
-        public Boolean chercherProduitsParRef(List<Produit> listeProduitsAChercher)
-        {
-            return true;
-        }
-
-        public Boolean chercherProduitsParCodeBar(List<Produit> listeProduitsAChercher)
-        {
             return true;
         }
 

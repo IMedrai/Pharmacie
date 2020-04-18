@@ -19,7 +19,7 @@ namespace Pharmacie
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             dbHandler = new ADO("Data Source = SSR\\SQLEXPRESS; Initial Catalog = Pharmacie; Integrated Security = True");
-            Application.Run(new ProduitForm());
+            Application.Run(new ClientForm());
         }
     }
 }

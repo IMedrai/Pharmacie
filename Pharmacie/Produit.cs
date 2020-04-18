@@ -64,7 +64,29 @@ namespace Pharmacie
 
 		public Boolean modifierProduit()
 		{
-			return true;
+			String updateRequest = "update produit set libelleProduit = @libelleProduit,codebarreProduit = @codebarreProduit,prixProduit = @prixProduit where refProduit  = @refProduit";
+			List<SqlParameter> listParams = new List<SqlParameter>();
+			SqlParameter param = new SqlParameter();
+			param.ParameterName = "@refProduit";
+			param.Value = this.refProduit;
+			listParams.Add(param);
+
+			param = new SqlParameter();
+			param.ParameterName = "@libelleProduit";
+			param.Value = this.libelle;
+			listParams.Add(param);
+
+			param = new SqlParameter();
+			param.ParameterName = "@codebarreProduit";
+			param.Value = this.codeBar;
+			listParams.Add(param);
+
+			param = new SqlParameter();
+			param.ParameterName = "@prixProduit";
+			param.Value = this.prix;
+			listParams.Add(param);
+			Boolean resultInsert = Program.dbHandler.executeNoOutputRequest(updateRequest, listParams);
+			return resultInsert;
 		}
 
 		public Boolean chercherProduitParRef()

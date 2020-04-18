@@ -30,64 +30,75 @@ namespace Pharmacie
                 listClients = new List<Client>();
             }
 
-            Client patient = lireClientDepuisFormulaire();
-            listClients.Add(patient);
+            Client client = lireClientDepuisFormulaire();
+            listClients.Add(client);
             dataGridView1.DataSource = listClients;
             button_vider_Click(sender, e);
         }
 
-        private Client lireClientDepuisFormulaire()
-        {
-            Client patient = new Client();
-            patient.Cin = textBox1_cin.Text;
-            patient.Nom = textBox2_nom.Text;
-            patient.Prenom = textBox3_prenom.Text;
-            return patient;
-        }
-
-        private List<Client> LireListClients()
+        private List<Client> lireListClients()
         {
             return (List<Client>)dataGridView1.DataSource;
+        }
+
+        private void setListClients(List<Client> listClients)
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = listClients;
+        }
+
+        private Client lireClientDepuisFormulaire()
+        {
+            Client client = new Client();
+            client.Cin = textBox1_cin.Text;
+            client.Nom = textBox2_nom.Text;
+            client.Prenom = textBox3_prenom.Text;
+            return client;
         }
 
         private void button_modifier_Click(object sender, EventArgs e)
         {
             textBox1_cin.ReadOnly = false;
-        if(dataGridView1.SelectedRows !=null && dataGridView1.SelectedRows.Count > 0) 
+            if(dataGridView1.SelectedRows !=null && dataGridView1.SelectedRows.Count > 0) 
             {
                 if(textBox1_cin.Text != null && textBox1_cin.Text.Length > 0)
                 {
-                    Client patientToUpdate = lireClientDepuisFormulaire();
+                    Client clientToUpdate = lireClientDepuisFormulaire();
                     List<Client> listClients = (List<Client>)dataGridView1.DataSource;
                     dataGridView1.DataSource = null;
-                    foreach( Client patient in listClients)
+                    foreach( Client client in listClients)
                     {
-                        if (!patient.Cin.Equals(patientToUpdate.Cin))
+                        if (!client.Cin.Equals(clientToUpdate.Cin))
                         {
                             continue;
                         }
-                        patient.Cin = patientToUpdate.Cin;
-                        patient.Nom = patientToUpdate.Nom;
-                        patient.Prenom = patientToUpdate.Prenom;
+                        client.Cin = clientToUpdate.Cin;
+                        client.Nom = clientToUpdate.Nom;
+                        client.Prenom = clientToUpdate.Prenom;
                         break;
 
                     }
                     dataGridView1.DataSource = listClients;
+                    button_vider_Click(sender, e);
                 }
                 else
                 {
                     foreach(DataGridViewRow ligne in dataGridView1.SelectedRows)
                     {
-                        Client patient = (Client)ligne.DataBoundItem;
-                        textBox1_cin.Text = patient.Cin;
-                        textBox2_nom.Text = patient.Nom;
-                        textBox3_prenom.Text = patient.Prenom;
+                        Client client = (Client)ligne.DataBoundItem;
+                        setFormulaire(client);
                     }
                     textBox1_cin.ReadOnly = true;
-
-                    }
                 }
             }
+        }
+
+        private void setFormulaire(Client client)
+        {
+            textBox1_cin.Text = client.Cin;
+            textBox2_nom.Text = client.Nom;
+            textBox3_prenom.Text = client.Prenom;
+        }
 
         private void button_vider_Click(object sender, EventArgs e)
         {
@@ -105,12 +116,57 @@ namespace Pharmacie
 
         private void button_appliquer_Click(object sender, EventArgs e)
         {
-            ClientCont patientD = new ClientCont(LireListClients());
-            Boolean result = patientD.ajouterClient();
+            ClientCont patientD = new ClientCont(lireListClients());
+            Boolean result = patientD.ajouterOuModifierClient();
             if (result == false)
 
             {
                 MessageBox.Show(" Un problème est survenu lors de l'insertion des produits ");
+            }
+            else
+            {
+                MessageBox.Show("Toutes les modifications ont été appliquées");
+            }
+        }
+
+        private void button_chercher_Click(object sender, EventArgs e)
+        {
+            if (textBox1_cin.Text != null && textBox1_cin.Text.Length > 0)
+            {
+                Boolean checkDB = true;
+                List<Client> listClientsExistant = lireListClients();
+                if (listClientsExistant != null && listClientsExistant.Count > 0)
+                {
+                    foreach (Client clientExistant in listClientsExistant)
+                    {
+                        if (textBox1_cin.Text.Equals(clientExistant.Cin))
+                        {
+                            setFormulaire(clientExistant);
+                            checkDB = false;
+                            break;
+                        }
+                    }
+                }
+                if (checkDB)
+                {
+                    Client clientRecherche = new Client();
+                    clientRecherche.Cin = textBox1_cin.Text;
+                    Boolean clientFound = clientRecherche.chercherClientParCin() ;
+                    if (clientFound)
+                    {
+                        if (listClientsExistant == null)
+                        {
+                            listClientsExistant = new List<Client>();
+                        }
+                        listClientsExistant.Add(clientRecherche);
+                        setListClients(listClientsExistant);
+                        setFormulaire(clientRecherche);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Le Client [" + textBox1_cin.Text + "] n'existe pas");
+                    }
+                }
             }
         }
     }
