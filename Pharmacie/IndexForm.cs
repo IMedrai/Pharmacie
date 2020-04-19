@@ -40,7 +40,13 @@ namespace Pharmacie
         {
             VenteCont venteCont = new VenteCont();
             venteCont.rechercheToutesVente();
+            dataGridView1.DataSource = null;
             dataGridView1.DataSource = venteCont.ListVente;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            IndexForm_Load(sender,e);
         }
     }
 }
