@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox5_qnt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.button_appliquer = new System.Windows.Forms.Button();
             this.button_vider = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -36,6 +38,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qnt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_chercher = new System.Windows.Forms.Button();
             this.button_modifier = new System.Windows.Forms.Button();
             this.button_ajouter = new System.Windows.Forms.Button();
@@ -53,6 +56,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox5_qnt);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.button_appliquer);
             this.groupBox1.Controls.Add(this.button_vider);
             this.groupBox1.Controls.Add(this.dataGridView1);
@@ -69,10 +74,26 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(34, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1268, 512);
+            this.groupBox1.Size = new System.Drawing.Size(1268, 622);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produits";
+            // 
+            // textBox5_qnt
+            // 
+            this.textBox5_qnt.Location = new System.Drawing.Point(252, 252);
+            this.textBox5_qnt.Name = "textBox5_qnt";
+            this.textBox5_qnt.Size = new System.Drawing.Size(58, 26);
+            this.textBox5_qnt.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(31, 255);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 20);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Quantité";
             // 
             // button_appliquer
             // 
@@ -101,8 +122,9 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 279);
+            this.Column4,
+            this.Qnt});
+            this.dataGridView1.Location = new System.Drawing.Point(35, 388);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
@@ -140,6 +162,14 @@
             this.Column4.MinimumWidth = 8;
             this.Column4.Name = "Column4";
             this.Column4.Width = 150;
+            // 
+            // Qnt
+            // 
+            this.Qnt.DataPropertyName = "Qnt";
+            this.Qnt.HeaderText = "Quantité";
+            this.Qnt.MinimumWidth = 8;
+            this.Qnt.Name = "Qnt";
+            this.Qnt.Width = 150;
             // 
             // button_chercher
             // 
@@ -202,7 +232,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 211);
+            this.label4.Location = new System.Drawing.Point(31, 214);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 20);
             this.label4.TabIndex = 3;
@@ -211,7 +241,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 167);
+            this.label3.Location = new System.Drawing.Point(34, 170);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 20);
             this.label3.TabIndex = 2;
@@ -220,7 +250,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 126);
+            this.label2.Location = new System.Drawing.Point(31, 123);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 20);
             this.label2.TabIndex = 1;
@@ -229,7 +259,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 74);
+            this.label1.Location = new System.Drawing.Point(31, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(170, 20);
             this.label1.TabIndex = 0;
@@ -239,10 +269,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1329, 571);
+            this.ClientSize = new System.Drawing.Size(1640, 682);
             this.Controls.Add(this.groupBox1);
             this.Name = "ProduitForm";
-            this.Text = "ProduitForm";
+            this.Text = "Gestion des produits";
             this.Load += new System.EventHandler(this.ProduitForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -266,11 +296,14 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button_vider;
+        private System.Windows.Forms.Button button_appliquer;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.Button button_vider;
-        private System.Windows.Forms.Button button_appliquer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qnt;
+        private System.Windows.Forms.TextBox textBox5_qnt;
     }
 }

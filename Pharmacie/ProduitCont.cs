@@ -20,15 +20,20 @@ namespace Pharmacie
                 foreach(Produit prod in listeProduits)
                 {
                     Produit prodRecherche = new Produit();
+                    Stock stock = new Stock();
+                    stock.RefPreoduit = prod.RefProduit;
+                    stock.Qnt = prod.Qnt;
                     prodRecherche.RefProduit = prod.RefProduit;
                     Boolean exist = prodRecherche.chercherProduitParRef();
                     if (exist)
                     {
                         prod.modifierProduit();
+                        stock.ajouterAuStock();
                     }
                     else
                     {
                         prod.ajouterProduit();
+                        stock.creerStock();
                     }
                 }
             }
@@ -44,7 +49,7 @@ namespace Pharmacie
 
         public void rechercheProduitDispoFromDB()
         {
-            String selectQuery = "select refProduit,libelleProduit,codebarreProduit,prixProduit from produit";
+            String selectQuery = "select p.refProduit,p.libelleProduit,p.codebarreProduit,p.prixProduit,s.qnt from produit p, stock s where p.refProduit = s.refProduit";
             List<SqlParameter> listParams = new List<SqlParameter>();
             getProduitsFromDict(Program.dbHandler.executeRequest(selectQuery, listParams));
         }

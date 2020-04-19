@@ -15,11 +15,13 @@ namespace Pharmacie
 		private String codeBar;
 		private Double prix;
 		private String libelle;
+		private int qnt;
 
 		private static readonly String REF_PROD_DB = "refProduit";
 		private static readonly String LIBELLE_PROD_DB = "libelleProduit";
 		private static readonly String CODE_BARRE_PROD_DB = "codebarreProduit";
 		private static readonly String PRIX_PROD_DB = "prixProduit";
+		private static readonly String QNT_PROD_DB = "qnt";
 
 
 
@@ -27,6 +29,7 @@ namespace Pharmacie
 		public String CodeBar { get => codeBar; set => codeBar = value; }
 		public double Prix { get => prix; set => prix = value; }
 		public string Libelle { get => libelle; set => libelle = value; }
+		public int Qnt { get => qnt; set => qnt = value; }
 
 
 		public Produit()
@@ -72,6 +75,7 @@ namespace Pharmacie
 			this.Libelle = otherProd.Libelle;
 			this.Prix = otherProd.Prix;
 			this.CodeBar = otherProd.CodeBar;
+			this.Qnt = otherProd.Qnt;
 		}
 
 		public Boolean modifierProduit()
@@ -103,7 +107,7 @@ namespace Pharmacie
 
 		public Boolean chercherProduitParRef()
 		{
-			String insertRequest = "select refProduit,libelleProduit,codebarreProduit,prixProduit from produit where refProduit = @refProduit";
+			String insertRequest = "select p.refProduit,p.libelleProduit,p.codebarreProduit,p.prixProduit,s.qnt from produit p, stock s where p.refProduit = s.refProduit and p.refProduit  = @refProduit";
 			List<SqlParameter> listParams = new List<SqlParameter>();
 			SqlParameter param = new SqlParameter();
 			param.ParameterName = "@refProduit";
@@ -149,7 +153,11 @@ namespace Pharmacie
 			obj = null;
 			element.TryGetValue(PRIX_PROD_DB, out obj);
 			this.Prix = (Double)obj;
-			
+
+			obj = null;
+			element.TryGetValue(QNT_PROD_DB, out obj);
+			this.Qnt = (int)obj;
+
 			return true;
 		}
 

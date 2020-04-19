@@ -212,7 +212,7 @@
             this.ClientSize = new System.Drawing.Size(1109, 725);
             this.Controls.Add(this.groupBox1);
             this.Name = "ClientForm";
-            this.Text = "ClientForm";
+            this.Text = "Gestion des clients";
             this.Load += new System.EventHandler(this.ClientForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

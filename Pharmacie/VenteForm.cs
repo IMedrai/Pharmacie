@@ -83,5 +83,44 @@ namespace Pharmacie
             return vente;
         }
 
+        private void button_vider_Click(object sender, EventArgs e)
+        {
+            foreach (Control element in groupBox1.Controls)
+            {
+                if (element is TextBox || element is NumericUpDown || element is ComboBox)
+                {
+                    element.Text = null;
+                }
+            }
+        }
+
+        private void button_modifier_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows != null && dataGridView1.SelectedRows.Count > 0)
+            {
+                DialogResult res = MessageBox.Show("Veuillez confirmer la suppression","",MessageBoxButtons.YesNo);
+                if ("Yes".Equals(res.ToString()))
+                {
+                    List<Vente> listDletedVentes = new List<Vente>();
+                    foreach (DataGridViewRow ligne in dataGridView1.SelectedRows)
+                    {
+                        dataGridView1.Rows.Remove(ligne);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Non");
+                }
+            }
+        }
+
+        private void button_appliquer_Click(object sender, EventArgs e)
+        {
+            List <Vente> listVentes = lireListVentes();
+            VenteCont venteCont = new VenteCont();
+            venteCont.ListVente = listVentes;
+            venteCont.ApplyVenteAndUpdateStock();
+
+        }
     }
 }

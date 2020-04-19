@@ -34,16 +34,31 @@ namespace Pharmacie
                 con.Close();
             }
         }
-
+        /// <summary>
+        /// Execute une requête sans retour (update,delete)
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
         public Boolean executeNoOutputRequest(String request, List<SqlParameter> param)
         {
             Boolean resultRequest = true;
             connecter();
             cmd = new SqlCommand(request);
             cmd.Connection = this.con;
+            cmd.Parameters.Clear();
             cmd.Parameters.AddRange(param.ToArray());
-            int result = cmd.ExecuteNonQuery();
-            if (result == -1)
+            int result = -1;
+            try
+            {
+                result = cmd.ExecuteNonQuery();
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(""+e.Message);
+             }
+            
+            if (result < 0)
             {
                 resultRequest = false;
             }
@@ -59,7 +74,12 @@ namespace Pharmacie
             Console.WriteLine(obj.GetType());
             return obj.ToString();
         }
-
+        /// <summary>
+        /// Execute une requête est lire le retour (select)
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
         public List<Dictionary<String, Object>> executeRequest(String request, List<SqlParameter> param)
         {
             connecter();

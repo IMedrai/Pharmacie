@@ -30,6 +30,16 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.NomPrenomClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CinClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RefProduit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LibelleProduit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qnt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModePaiement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrixUnitaire = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RefVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label_refVente = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox2_Total = new System.Windows.Forms.TextBox();
@@ -48,16 +58,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.NomPrenomClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CinClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RefProduit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LibelleProduit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qnt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ModePaiement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrixUnitaire = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RefVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1_Qte)).BeginInit();
@@ -107,12 +107,93 @@
             this.PrixUnitaire,
             this.Total,
             this.RefVente});
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(33, 485);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(1379, 367);
             this.dataGridView1.TabIndex = 27;
+            // 
+            // NomPrenomClient
+            // 
+            this.NomPrenomClient.DataPropertyName = "NomPrenomClient";
+            this.NomPrenomClient.HeaderText = "Client";
+            this.NomPrenomClient.MinimumWidth = 8;
+            this.NomPrenomClient.Name = "NomPrenomClient";
+            this.NomPrenomClient.Width = 150;
+            // 
+            // CinClient
+            // 
+            this.CinClient.DataPropertyName = "CinClient";
+            this.CinClient.HeaderText = "CIN Client";
+            this.CinClient.MinimumWidth = 8;
+            this.CinClient.Name = "CinClient";
+            this.CinClient.Width = 150;
+            // 
+            // RefProduit
+            // 
+            this.RefProduit.DataPropertyName = "RefProduit";
+            this.RefProduit.HeaderText = "Référence Produit";
+            this.RefProduit.MinimumWidth = 8;
+            this.RefProduit.Name = "RefProduit";
+            this.RefProduit.Width = 150;
+            // 
+            // LibelleProduit
+            // 
+            this.LibelleProduit.DataPropertyName = "LibelleProduit";
+            this.LibelleProduit.HeaderText = "Libelle Produit";
+            this.LibelleProduit.MinimumWidth = 8;
+            this.LibelleProduit.Name = "LibelleProduit";
+            this.LibelleProduit.Width = 150;
+            // 
+            // Qnt
+            // 
+            this.Qnt.DataPropertyName = "Qnt";
+            this.Qnt.HeaderText = "Quantité";
+            this.Qnt.MinimumWidth = 8;
+            this.Qnt.Name = "Qnt";
+            this.Qnt.Width = 150;
+            // 
+            // ModePaiement
+            // 
+            this.ModePaiement.DataPropertyName = "ModePaiement";
+            this.ModePaiement.HeaderText = "Mode paiement";
+            this.ModePaiement.MinimumWidth = 8;
+            this.ModePaiement.Name = "ModePaiement";
+            this.ModePaiement.Width = 150;
+            // 
+            // DateVente
+            // 
+            this.DateVente.DataPropertyName = "DateVente";
+            this.DateVente.HeaderText = "Date vente";
+            this.DateVente.MinimumWidth = 8;
+            this.DateVente.Name = "DateVente";
+            this.DateVente.Width = 150;
+            // 
+            // PrixUnitaire
+            // 
+            this.PrixUnitaire.DataPropertyName = "PrixUnitaire";
+            this.PrixUnitaire.HeaderText = "Prix unitaire";
+            this.PrixUnitaire.MinimumWidth = 8;
+            this.PrixUnitaire.Name = "PrixUnitaire";
+            this.PrixUnitaire.Width = 150;
+            // 
+            // Total
+            // 
+            this.Total.DataPropertyName = "Total";
+            this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 8;
+            this.Total.Name = "Total";
+            this.Total.Width = 150;
+            // 
+            // RefVente
+            // 
+            this.RefVente.DataPropertyName = "RefVente";
+            this.RefVente.HeaderText = "Référence Vente";
+            this.RefVente.MinimumWidth = 8;
+            this.RefVente.Name = "RefVente";
+            this.RefVente.Width = 150;
             // 
             // label_refVente
             // 
@@ -208,6 +289,7 @@
             this.button_appliquer.TabIndex = 13;
             this.button_appliquer.Text = "Appliquer";
             this.button_appliquer.UseVisualStyleBackColor = true;
+            this.button_appliquer.Click += new System.EventHandler(this.button_appliquer_Click);
             // 
             // button_vider
             // 
@@ -217,6 +299,7 @@
             this.button_vider.TabIndex = 12;
             this.button_vider.Text = "Vider";
             this.button_vider.UseVisualStyleBackColor = true;
+            this.button_vider.Click += new System.EventHandler(this.button_vider_Click);
             // 
             // button_chercher
             // 
@@ -233,8 +316,9 @@
             this.button_modifier.Name = "button_modifier";
             this.button_modifier.Size = new System.Drawing.Size(143, 40);
             this.button_modifier.TabIndex = 9;
-            this.button_modifier.Text = "Modifier";
+            this.button_modifier.Text = "Supprimer";
             this.button_modifier.UseVisualStyleBackColor = true;
+            this.button_modifier.Click += new System.EventHandler(this.button_modifier_Click);
             // 
             // button_ajouter
             // 
@@ -273,86 +357,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Référence Produit";
             // 
-            // NomPrenomClient
-            // 
-            this.NomPrenomClient.DataPropertyName = "NomPrenomClient";
-            this.NomPrenomClient.HeaderText = "Client";
-            this.NomPrenomClient.MinimumWidth = 8;
-            this.NomPrenomClient.Name = "NomPrenomClient";
-            this.NomPrenomClient.Width = 150;
-            // 
-            // CinClient
-            // 
-            this.CinClient.DataPropertyName = "CinClient";
-            this.CinClient.HeaderText = "CIN Client";
-            this.CinClient.MinimumWidth = 8;
-            this.CinClient.Name = "CinClient";
-            this.CinClient.Width = 150;
-            // 
-            // RefProduit
-            // 
-            this.RefProduit.DataPropertyName = "RefProduit";
-            this.RefProduit.HeaderText = "Référence Produit";
-            this.RefProduit.MinimumWidth = 8;
-            this.RefProduit.Name = "RefProduit";
-            this.RefProduit.Width = 150;
-            // 
-            // LibelleProduit
-            // 
-            this.LibelleProduit.DataPropertyName = "LibelleProduit";
-            this.LibelleProduit.HeaderText = "Libelle Produit";
-            this.LibelleProduit.MinimumWidth = 8;
-            this.LibelleProduit.Name = "LibelleProduit";
-            this.LibelleProduit.Width = 150;
-            // 
-            // Qnt
-            // 
-            this.Qnt.DataPropertyName = "Qnt";
-            this.Qnt.HeaderText = "Quantité";
-            this.Qnt.MinimumWidth = 8;
-            this.Qnt.Name = "Qnt";
-            this.Qnt.Width = 150;
-            // 
-            // ModePaiement
-            // 
-            this.ModePaiement.DataPropertyName = "ModePaiement";
-            this.ModePaiement.HeaderText = "Mode paiement";
-            this.ModePaiement.MinimumWidth = 8;
-            this.ModePaiement.Name = "ModePaiement";
-            this.ModePaiement.Width = 150;
-            // 
-            // DateVente
-            // 
-            this.DateVente.DataPropertyName = "DateVente";
-            this.DateVente.HeaderText = "Date vente";
-            this.DateVente.MinimumWidth = 8;
-            this.DateVente.Name = "DateVente";
-            this.DateVente.Width = 150;
-            // 
-            // PrixUnitaire
-            // 
-            this.PrixUnitaire.DataPropertyName = "PrixUnitaire";
-            this.PrixUnitaire.HeaderText = "Prix unitaire";
-            this.PrixUnitaire.MinimumWidth = 8;
-            this.PrixUnitaire.Name = "PrixUnitaire";
-            this.PrixUnitaire.Width = 150;
-            // 
-            // Total
-            // 
-            this.Total.DataPropertyName = "Total";
-            this.Total.HeaderText = "Total";
-            this.Total.MinimumWidth = 8;
-            this.Total.Name = "Total";
-            this.Total.Width = 150;
-            // 
-            // RefVente
-            // 
-            this.RefVente.DataPropertyName = "RefVente";
-            this.RefVente.HeaderText = "Référence Vente";
-            this.RefVente.MinimumWidth = 8;
-            this.RefVente.Name = "RefVente";
-            this.RefVente.Width = 150;
-            // 
             // VenteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -361,7 +365,7 @@
             this.ClientSize = new System.Drawing.Size(1713, 918);
             this.Controls.Add(this.groupBox1);
             this.Name = "VenteForm";
-            this.Text = "VenteForm";
+            this.Text = "Gestion des ventes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VenteForm_Load);
             this.groupBox1.ResumeLayout(false);

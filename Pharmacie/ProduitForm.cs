@@ -51,6 +51,7 @@ namespace Pharmacie
             prod.CodeBar = textBox2.Text;
             prod.Libelle = textBox4.Text;
             prod.Prix = Double.Parse(textBox3.Text);
+            prod.Qnt = int.Parse(textBox5_qnt.Text);
             return prod;
         }
 
@@ -81,9 +82,8 @@ namespace Pharmacie
                         {
                             continue;
                         }
-                        prod.CodeBar = prodToUpdate.CodeBar;
-                        prod.Libelle = prodToUpdate.Libelle;
-                        prod.Prix = prodToUpdate.Prix;
+                        prod.updateMySelf(prodToUpdate);
+                        
                         break;
                     }
                     dataGridView1.DataSource = listProduits;
@@ -110,6 +110,7 @@ namespace Pharmacie
             textBox2.Text = prod.CodeBar;
             textBox3.Text = prod.Prix.ToString();
             textBox4.Text = prod.Libelle;
+            textBox5_qnt.Text = prod.Qnt.ToString();
         }
 
         private void button_vider_Click(object sender, EventArgs e)

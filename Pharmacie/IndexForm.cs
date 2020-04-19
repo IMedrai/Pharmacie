@@ -35,5 +35,12 @@ namespace Pharmacie
             VenteForm venteForm = new VenteForm();
             venteForm.Show();
         }
+
+        private void IndexForm_Load(object sender, EventArgs e)
+        {
+            VenteCont venteCont = new VenteCont();
+            venteCont.rechercheToutesVente();
+            dataGridView1.DataSource = venteCont.ListVente;
+        }
     }
 }
