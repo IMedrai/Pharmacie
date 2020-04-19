@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label_refVente = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox2_Total = new System.Windows.Forms.TextBox();
@@ -47,18 +48,25 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.NomPrenomClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CinClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RefProduit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LibelleProduit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qnt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModePaiement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrixUnitaire = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RefVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1_Qte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1_Qte)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.label_refVente);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
@@ -80,10 +88,31 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(43, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(962, 662);
+            this.groupBox1.Size = new System.Drawing.Size(1453, 877);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ventes";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NomPrenomClient,
+            this.CinClient,
+            this.RefProduit,
+            this.LibelleProduit,
+            this.Qnt,
+            this.ModePaiement,
+            this.DateVente,
+            this.PrixUnitaire,
+            this.Total,
+            this.RefVente});
+            this.dataGridView1.Location = new System.Drawing.Point(33, 485);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(1379, 367);
+            this.dataGridView1.TabIndex = 27;
             // 
             // label_refVente
             // 
@@ -244,21 +273,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Référence Produit";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NomPrenomClient,
-            this.LibelleProduit,
-            this.Qnt,
-            this.ModePaiement});
-            this.dataGridView1.Location = new System.Drawing.Point(33, 485);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(871, 150);
-            this.dataGridView1.TabIndex = 27;
-            // 
             // NomPrenomClient
             // 
             this.NomPrenomClient.DataPropertyName = "NomPrenomClient";
@@ -267,10 +281,26 @@
             this.NomPrenomClient.Name = "NomPrenomClient";
             this.NomPrenomClient.Width = 150;
             // 
+            // CinClient
+            // 
+            this.CinClient.DataPropertyName = "CinClient";
+            this.CinClient.HeaderText = "CIN Client";
+            this.CinClient.MinimumWidth = 8;
+            this.CinClient.Name = "CinClient";
+            this.CinClient.Width = 150;
+            // 
+            // RefProduit
+            // 
+            this.RefProduit.DataPropertyName = "RefProduit";
+            this.RefProduit.HeaderText = "Référence Produit";
+            this.RefProduit.MinimumWidth = 8;
+            this.RefProduit.Name = "RefProduit";
+            this.RefProduit.Width = 150;
+            // 
             // LibelleProduit
             // 
             this.LibelleProduit.DataPropertyName = "LibelleProduit";
-            this.LibelleProduit.HeaderText = "Produit";
+            this.LibelleProduit.HeaderText = "Libelle Produit";
             this.LibelleProduit.MinimumWidth = 8;
             this.LibelleProduit.Name = "LibelleProduit";
             this.LibelleProduit.Width = 150;
@@ -291,20 +321,55 @@
             this.ModePaiement.Name = "ModePaiement";
             this.ModePaiement.Width = 150;
             // 
+            // DateVente
+            // 
+            this.DateVente.DataPropertyName = "DateVente";
+            this.DateVente.HeaderText = "Date vente";
+            this.DateVente.MinimumWidth = 8;
+            this.DateVente.Name = "DateVente";
+            this.DateVente.Width = 150;
+            // 
+            // PrixUnitaire
+            // 
+            this.PrixUnitaire.DataPropertyName = "PrixUnitaire";
+            this.PrixUnitaire.HeaderText = "Prix unitaire";
+            this.PrixUnitaire.MinimumWidth = 8;
+            this.PrixUnitaire.Name = "PrixUnitaire";
+            this.PrixUnitaire.Width = 150;
+            // 
+            // Total
+            // 
+            this.Total.DataPropertyName = "Total";
+            this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 8;
+            this.Total.Name = "Total";
+            this.Total.Width = 150;
+            // 
+            // RefVente
+            // 
+            this.RefVente.DataPropertyName = "RefVente";
+            this.RefVente.HeaderText = "Référence Vente";
+            this.RefVente.MinimumWidth = 8;
+            this.RefVente.Name = "RefVente";
+            this.RefVente.Width = 150;
+            // 
             // VenteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1038, 686);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1713, 918);
             this.Controls.Add(this.groupBox1);
             this.Name = "VenteForm";
             this.Text = "VenteForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VenteForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1_Qte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1_Qte)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -331,8 +396,14 @@
         private System.Windows.Forms.Label label_refVente;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomPrenomClient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CinClient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RefProduit;
         private System.Windows.Forms.DataGridViewTextBoxColumn LibelleProduit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qnt;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModePaiement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateVente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrixUnitaire;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RefVente;
     }
 }

@@ -67,6 +67,13 @@ namespace Pharmacie
 			return resultInsert;
 		}
 
+		public void updateMySelf(Produit otherProd)
+		{
+			this.Libelle = otherProd.Libelle;
+			this.Prix = otherProd.Prix;
+			this.CodeBar = otherProd.CodeBar;
+		}
+
 		public Boolean modifierProduit()
 		{
 			String updateRequest = "update produit set libelleProduit = @libelleProduit,codebarreProduit = @codebarreProduit,prixProduit = @prixProduit where refProduit  = @refProduit";
@@ -145,6 +152,12 @@ namespace Pharmacie
 			
 			return true;
 		}
+
+		public override bool Equals(Object otherProd)
+		{
+			return this.RefProduit.Equals(((Produit)otherProd).RefProduit);
+		}
+
 
 	}
 }

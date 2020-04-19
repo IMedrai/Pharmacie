@@ -51,9 +51,15 @@ namespace Pharmacie
             {
                 listVentes = new List<Vente>();
             }
+            vente.updateMySelf(label_refVente.Text);
             listVentes.Add(vente);
+            Double totalToutesVente = 0d;
+            foreach (Vente v in listVentes)
+            {
+                totalToutesVente += v.Total;
+            }
+            textBox2_Total.Text = totalToutesVente.ToString();
             setListVentes(listVentes);
-
         }
 
         private List<Vente> lireListVentes()
@@ -71,7 +77,7 @@ namespace Pharmacie
         {
             Vente vente = new Vente();
             vente.LibelleProduit = (String)comboBox1_RefProduit.SelectedItem;
-            vente.NomPrenomClient = (String)comboBox2_cin.SelectedItem;
+            vente.NomPrenomclient = (String)comboBox2_cin.SelectedItem;
             vente.Qnt = (int)numericUpDown1_Qte.Value;
             vente.ModePaiement = (String)comboBox1_typePaiement.SelectedItem;
             return vente;

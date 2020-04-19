@@ -11,6 +11,8 @@ namespace Pharmacie
 
         public static ADO dbHandler;
         public static ModePaiementCont modePaiementCont;
+        public static List<Produit> listGlobalProduits;
+        public static List<Client> listGlobalClients;
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
@@ -21,7 +23,14 @@ namespace Pharmacie
             Application.SetCompatibleTextRenderingDefault(false);
             modePaiementCont = new ModePaiementCont();
             dbHandler = new ADO("Data Source = SSR\\SQLEXPRESS; Initial Catalog = Pharmacie; Integrated Security = True");
-            Application.Run(new VenteForm());
+            ProduitCont prodCont = new ProduitCont();
+            prodCont.rechercheProduitDispoFromDB();
+            Program.listGlobalProduits = prodCont.ListeProduits;
+            ClientCont clientCont = new ClientCont();
+            clientCont.rechercherTousClientFromDB();
+            Program.listGlobalClients = clientCont.ListClients;
+            //Console.WriteLine("cccc "+Program.listGlobalProduits.Count);
+            Application.Run(new IndexForm());
         }
     }
 }

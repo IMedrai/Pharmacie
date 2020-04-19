@@ -133,5 +133,16 @@ namespace Pharmacie
 		{
 			return true;
 		}
+
+        internal void updateMySelf(Client clientUpdated)
+        {
+			this.Nom = clientUpdated.Nom;
+			this.Prenom = clientUpdated.Prenom;
+        }
+
+		public override bool Equals(object obj)
+		{
+			return this.Cin.Equals(((Client)obj).Cin);
+		}
 	}
 }

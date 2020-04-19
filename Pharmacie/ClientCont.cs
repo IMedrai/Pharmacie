@@ -39,10 +39,17 @@ namespace Pharmacie
 
         public void rechercherTousClient()
         {
+            /*String selectQuery = "select cin,nom,prenom from client";
+            List<SqlParameter> listParams = new List<SqlParameter>();
+            getClientsFromDict(Program.dbHandler.executeRequest(selectQuery, listParams));*/
+            this.ListClients = Program.listGlobalClients;
+        }
+
+        public void rechercherTousClientFromDB()
+        {
             String selectQuery = "select cin,nom,prenom from client";
             List<SqlParameter> listParams = new List<SqlParameter>();
             getClientsFromDict(Program.dbHandler.executeRequest(selectQuery, listParams));
-
         }
 
         private void getClientsFromDict(List<Dictionary<String, Object>> listResults)

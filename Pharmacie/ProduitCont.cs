@@ -37,10 +37,16 @@ namespace Pharmacie
 
         public void rechercheProduitDispo()
         {
+            
+            this.ListeProduits = Program.listGlobalProduits;
+
+        }
+
+        public void rechercheProduitDispoFromDB()
+        {
             String selectQuery = "select refProduit,libelleProduit,codebarreProduit,prixProduit from produit";
             List<SqlParameter> listParams = new List<SqlParameter>();
             getProduitsFromDict(Program.dbHandler.executeRequest(selectQuery, listParams));
-
         }
 
         private void getProduitsFromDict(List<Dictionary<String, Object>> listResults)

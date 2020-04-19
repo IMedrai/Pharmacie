@@ -21,7 +21,8 @@ namespace Pharmacie
 
         private void ProduitForm_Load(object sender, EventArgs e)
         {
-            
+            Console.WriteLine("form produit load");
+            setListProduits(Program.listGlobalProduits);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -131,15 +132,33 @@ namespace Pharmacie
             }
             else
             {
+                updateProgramListProduit(prodCont, Program.listGlobalProduits);
                 MessageBox.Show("Toutes les modifications ont été appliquées");
             }
+        }
+
+        private List<Produit> updateProgramListProduit(ProduitCont prodCont, List<Produit> listProduitsProgram)
+        {
+            foreach (Produit prodProgram in listProduitsProgram)
+            {
+                foreach (Produit prodUpdated in prodCont.ListeProduits)
+                {
+                    if (!prodProgram.Equals(prodUpdated))
+                    {
+                        continue;
+                    }
+                    prodProgram.updateMySelf(prodUpdated);
+                    break;
+                }
+            }
+            return listProduitsProgram;
         }
 
         private void button_chercher_Click(object sender, EventArgs e)
         {
             if (textBox1.Text != null && textBox1.Text.Length > 0)
             {
-                Boolean checkDB = true;
+                Boolean isExist = false;
                 List < Produit > listProduitsExistant = lireListProduits();
                 if (listProduitsExistant != null && listProduitsExistant.Count > 0)
                 {
@@ -148,31 +167,14 @@ namespace Pharmacie
                         if (textBox1.Text.Equals(prodExistant.RefProduit))
                         {
                             setFormulaire(prodExistant);
-                            checkDB = false;
+                            isExist = true;
                             break;
                         }
                     }
                 }
-                if (checkDB)
+                if (!isExist)
                 {
-                    Produit prodRecherche = new Produit();
-                    prodRecherche.RefProduit = textBox1.Text;
-                    Boolean productFound = prodRecherche.chercherProduitParRef();
-                    if (productFound)
-                    {
-                        List<Produit> listProduits = lireListProduits();
-                        if (listProduits == null)
-                        {
-                            listProduits = new List<Produit>();
-                        }
-                        listProduits.Add(prodRecherche);
-                        setListProduits(listProduits);
-                        setFormulaire(prodRecherche);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Le produit ["+textBox1.Text+"] n'existe pas");
-                    }
+                    MessageBox.Show("Le produit ["+textBox1.Text+"] n'existe pas");
                 }
             }
         }

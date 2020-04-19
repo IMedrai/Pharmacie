@@ -125,15 +125,34 @@ namespace Pharmacie
             }
             else
             {
+                updateProgramListProduit(patientD, Program.listGlobalClients);
                 MessageBox.Show("Toutes les modifications ont été appliquées");
             }
+        }
+
+
+        private List<Client> updateProgramListProduit(ClientCont clientCont, List<Client> listClientsProgram)
+        {
+            foreach (Client clientProgram in listClientsProgram)
+            {
+                foreach (Client clientUpdated in clientCont.ListClients)
+                {
+                    if (!clientProgram.Equals(clientUpdated))
+                    {
+                        continue;
+                    }
+                    clientProgram.updateMySelf(clientUpdated);
+                    break;
+                }
+            }
+            return listClientsProgram;
         }
 
         private void button_chercher_Click(object sender, EventArgs e)
         {
             if (textBox1_cin.Text != null && textBox1_cin.Text.Length > 0)
             {
-                Boolean checkDB = true;
+                Boolean isExist = true;
                 List<Client> listClientsExistant = lireListClients();
                 if (listClientsExistant != null && listClientsExistant.Count > 0)
                 {
@@ -142,32 +161,22 @@ namespace Pharmacie
                         if (textBox1_cin.Text.Equals(clientExistant.Cin))
                         {
                             setFormulaire(clientExistant);
-                            checkDB = false;
+                            isExist = true;
                             break;
                         }
                     }
                 }
-                if (checkDB)
+                if (!isExist)
                 {
-                    Client clientRecherche = new Client();
-                    clientRecherche.Cin = textBox1_cin.Text;
-                    Boolean clientFound = clientRecherche.chercherClientParCin() ;
-                    if (clientFound)
-                    {
-                        if (listClientsExistant == null)
-                        {
-                            listClientsExistant = new List<Client>();
-                        }
-                        listClientsExistant.Add(clientRecherche);
-                        setListClients(listClientsExistant);
-                        setFormulaire(clientRecherche);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Le Client [" + textBox1_cin.Text + "] n'existe pas");
-                    }
+                    
+                    MessageBox.Show("Le Client [" + textBox1_cin.Text + "] n'existe pas");
                 }
             }
+        }
+
+        private void ClientForm_Load(object sender, EventArgs e)
+        {
+            setListClients(Program.listGlobalClients);
         }
     }
 
